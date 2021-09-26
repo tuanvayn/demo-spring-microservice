@@ -17,6 +17,10 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
+/**
+ * Class of CreateUserRequestDto that interact to the other layers. This class used for updating
+ * user service
+ */
 public class UpdateUserRequestDto {
   @NotBlank private String id;
 

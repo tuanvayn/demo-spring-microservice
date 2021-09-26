@@ -5,5 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import me.tuanva.demo.model.User;
 
+/** Interface repository of User model. */
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {}

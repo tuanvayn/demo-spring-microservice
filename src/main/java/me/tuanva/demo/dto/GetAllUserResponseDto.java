@@ -16,6 +16,10 @@ import me.tuanva.demo.model.User;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
+/**
+ * Class of GetAllUserResponseDto that interact to the other layers. This class used for showing up
+ * list of User
+ */
 public class GetAllUserResponseDto {
   List<User> data;
 }

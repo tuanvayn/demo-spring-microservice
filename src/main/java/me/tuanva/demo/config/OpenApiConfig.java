@@ -17,12 +17,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class OpenApiConfig {
 
   /**
-   * Swagger erp api.
+   * Swagger dev api.
    *
    * @return the docket
    */
   @Bean
-  public Docket swaggerErpApi() {
+  public Docket swaggerDevApi() {
     return new Docket(DocumentationType.SWAGGER_2)
         .select()
         .apis(RequestHandlerSelectors.basePackage("me.tuanva.demo"))

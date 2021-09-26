@@ -26,6 +26,7 @@ import lombok.ToString;
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "USER", schema = "public")
+/** Class of User model that works with database, show for table User */
 public class User {
   @Id
   @GeneratedValue(generator = "system-uuid")

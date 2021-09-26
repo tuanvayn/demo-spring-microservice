@@ -17,6 +17,10 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
+/**
+ * Class of CreateUserRequestDto that interact to the other layers. This class used for create user
+ * service.
+ */
 public class CreateUserRequestDto {
   @ApiModelProperty(dataType = "String", example = "Vu Anh Tuan")
   @NotBlank

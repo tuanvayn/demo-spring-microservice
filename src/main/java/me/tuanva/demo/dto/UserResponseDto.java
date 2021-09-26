@@ -13,6 +13,10 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
+/**
+ * Class of CreateUserRequestDto that interact to the other layers. This class used for showing up
+ * informations of user
+ */
 public class UserResponseDto {
   private String id;
   private String username;
