@@ -5,12 +5,38 @@ networks:
     driver: bridge
 
 services:
+  demo:
+    build: ./
+    image: demo:latest
+    restart: always
+    container_name: demo
+    ports:
+      - 8686:8686
+    networks:
+      - backend
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=demo
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - ACTIVE_PROFILE=dev
+    volumes:
+      - ./workdir:/workdir
+    depends_on:
+      - db
+    healthcheck:
+      test: curl -f http://localhost:8686/demo/api/v1/actuator/health || exit 1
+      interval: 1m
+      timeout: 10s
+      retries: 2
+      
   db:
     image: postgres:12
     container_name: postgres-db
     restart: always
     volumes:
-      - /postgres_data:/var/lib/postgresql/data
+      - ./postgres_data:/var/lib/postgresql/data
     networks:
       - backend
     ports:
@@ -24,4 +50,6 @@ services:
       test: pg_isready -U postgres
       interval: 1m
       timeout: 10s
-      retries: 3
+      retries: 2
+  
+
