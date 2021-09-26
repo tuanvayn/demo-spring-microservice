@@ -37,10 +37,10 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public String deleteUser(String id) {
+  public UserResponseDto deleteUser(String id) {
     User user = userRepository.findById(id).orElseThrow(() -> new NotFoundException(id));
     userRepository.delete(user);
-    return id;
+    return new UserResponseDto(user.getId(), user.getUsername(), user.getGender());
   }
 
   @Override

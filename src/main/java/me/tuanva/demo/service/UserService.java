@@ -10,7 +10,7 @@ public interface UserService {
 
   UserResponseDto updateUser(UpdateUserRequestDto updateUserRequestDto);
 
-  String deleteUser(String id);
+  UserResponseDto deleteUser(String id);
 
   UserResponseDto getUser(String id);
 

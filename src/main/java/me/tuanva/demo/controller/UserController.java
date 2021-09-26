@@ -39,7 +39,7 @@ public class UserController {
 
   @ApiOperation(value = "API for deleting user")
   @DeleteMapping("/{id}")
-  ResponseEntity<String> deleteUser(@Valid @PathVariable String id) {
+  ResponseEntity<UserResponseDto> deleteUser(@Valid @PathVariable String id) {
     return ResponseEntity.ok().body(userService.deleteUser(id));
   }
 
