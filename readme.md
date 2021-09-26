@@ -1,18 +1,91 @@
-# Getting Started
+# Demo simple "microservice"
 
-### Reference Documentation
-For further reference, please consider the following sections:
+Simple Spring boot service run as microservice.
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.5.5/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.5.5/maven-plugin/reference/html/#build-image)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.5.5/reference/htmlsingle/#boot-features-jpa-and-spring-data)
-* [Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/2.5.5/reference/htmlsingle/#production-ready)
+## Description
 
-### Guides
-The following guides illustrate how to use some features concretely:
+This simple project just show simple CRUD services with little config to show up how service works.
 
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
-* [Building a RESTful Web Service with Spring Boot Actuator](https://spring.io/guides/gs/actuator-service/)
-* [Accessing data with MySQL](https://spring.io/guides/gs/accessing-data-mysql/)
+## Getting Started
 
+### Prerequisites
+
+* Windows OS or Linux distros
+* Docker
+* Docker compose
+* Java 11
+* Maven
+
+### Installing
+
+#### Run in dev environment
+
+* Start the database up
+
+  ```sh
+  docker-compose up -d db
+  ```
+
+* Start services
+  
+  ```sh
+  mvn clean install -DskipTests
+  java -jar target/demo-0.0.1-SNAPSHOT.jar -Dspring.profiles.active=dev
+  ```
+
+* or run on your favourite IDEs
+  with VM arguments:
+  `-Dspring.profiles.active=dev`
+  Example in eclipse:
+  ![add-arg-eclipse](./images/add-arg-eclipse.png)
+
+#### Run in prod environment
+
+* In production environment, you just run:
+  
+  ```sh
+    mvn clean install -DskipTests
+    docker-compose up -d
+  ```
+
+#### Any modifications needed to be made to files/folders
+
+Let's see some configurations in this project in the **docker-compose.yml** file:
+
+* **db service**: Informations that config the progres db with basic information of authentications, and mounted from docker container to host.
+
+* **demo service**: This our backend service runs depend on postgres db service (or another existing postgres db) in production and we must fill up these informations:
+
+  ```yml
+    - POSTGRES_HOST=db # db service name in docker-compose.yml file or ip/hostname of existing db
+    - POSTGRES_PORT=5432 # opening port of database
+    - POSTGRES_DB=demo #database name used by this project
+    - POSTGRES_USER=postgres # username for authenticating
+    - POSTGRES_PASSWORD=postgres # password for authenticating
+    - ACTIVE_PROFILE=prod # specific application profile if have multiple profiles for multiple environments 
+  ```
+
+## Help
+
+Any advise for common problems or issues.
+```
+command to run if program contains helper info
+```
+
+## Authors
+
+[@tuanvayn](https://github.com/tuanvayn)
+
+## Version History
+
+* 0.1
+    * Initial Release
+
+## Acknowledgments
+
+Inspiration, code snippets, etc.
+* [awesome-readme](https://github.com/matiassingers/awesome-readme)
+* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
+* [dbader](https://github.com/dbader/readme-template)
+* [zenorocha](https://gist.github.com/zenorocha/4526327)
+* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
