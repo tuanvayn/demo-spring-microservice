@@ -3,9 +3,6 @@ networks:
   backend:
     name: app
     driver: bridge
-volumes:
-  postgres_data:
-    driver: local
 
 services:
   db:
@@ -13,7 +10,7 @@ services:
     container_name: postgres-db
     restart: always
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - /postgres_data:/var/lib/postgresql/data
     networks:
       - backend
     ports:
