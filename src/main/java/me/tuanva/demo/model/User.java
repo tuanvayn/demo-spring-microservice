@@ -37,4 +37,9 @@ public class User {
 
   @Column(name = "GENDER", columnDefinition = "varchar(3)")
   private String gender;
+
+  public User(String username, String gender) {
+    this.username = username;
+    this.gender = gender;
+  }
 }

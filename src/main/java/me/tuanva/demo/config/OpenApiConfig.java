@@ -2,7 +2,6 @@ package me.tuanva.demo.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.annotation.EnableScheduling;
 
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -15,7 +14,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
-@EnableScheduling
 public class OpenApiConfig {
 
   /**
@@ -42,7 +40,7 @@ public class OpenApiConfig {
     return new ApiInfoBuilder()
         .title("Demo dev portal")
         .contact(
-            new Contact("VTB", "https://tuancongtuyn-1c372.web.app/", "vuanhtuan3.14@gmail.com"))
+            new Contact("VAT", "https://tuancongtuyn-1c372.web.app/", "vuanhtuan3.14@gmail.com"))
         .version("1.0")
         .build();
   }

@@ -1,17 +1,18 @@
 package me.tuanva.demo.service;
 
-import java.util.List;
-
-import me.tuanva.demo.model.User;
+import me.tuanva.demo.dto.CreateUserRequestDto;
+import me.tuanva.demo.dto.GetAllUserResponseDto;
+import me.tuanva.demo.dto.UpdateUserRequestDto;
+import me.tuanva.demo.dto.UserResponseDto;
 
 public interface UserService {
-  User createUser(User user);
+  UserResponseDto createUser(CreateUserRequestDto createUserRequestDto);
 
-  User updateUser(User user);
+  UserResponseDto updateUser(UpdateUserRequestDto updateUserRequestDto);
 
-  void deleteUser(User user);
+  String deleteUser(String id);
 
-  User getUser(User user);
+  UserResponseDto getUser(String id);
 
-  List<User> getUsers(User user);
+  GetAllUserResponseDto getUsers();
 }
